@@ -96,9 +96,9 @@ class WordsegModel(N.Module):
             # print('brkvecs =\n{}'.format(brkvecs))
             return brkvecs
 
-wordseg_model = WordsegModel(dim_charvec=16, dim_trans=32, no_layers=3).to(device=device)
+wordseg_model = WordsegModel(dim_charvec=32, dim_trans=256, no_layers=3).to(device=device)
 #ใส่ path model
-wordseg_model.load_state_dict(T.load('Onproduct_bigru.pt',map_location=device))
+wordseg_model.load_state_dict(T.load('bi-gru-256_4.pt',map_location=device))
 wordseg_model.eval()
 
 def tokenize(wordseg_model, charseq):
